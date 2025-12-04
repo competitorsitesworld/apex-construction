@@ -1,8 +1,14 @@
 import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Helper to get client safely
+const getClient = () => {
+  const apiKey = process.env.API_KEY || ''; 
+  // We allow empty string to prevent crash, but calls will fail if key is missing
+  return new GoogleGenAI({ apiKey });
+};
 
 export const createChatSession = (): Chat => {
+  const ai = getClient();
   return ai.chats.create({
     model: 'gemini-2.5-flash',
     config: {

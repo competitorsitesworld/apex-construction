@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Stats from './components/Stats';
 import About from './components/About';
-import Services from './components/Services';
+import BentoGrid from './components/BentoGrid'; // Using BentoGrid as the Services section
 import Process from './components/Process';
 import Projects from './components/Projects';
 import Founder from './components/Founder';
@@ -19,7 +19,8 @@ const App: React.FC = () => {
         <Hero />
         <Stats />
         <About />
-        <Services />
+        {/* Services Section represented as Bento Grid */}
+        <BentoGrid />
         <Process />
         <Projects />
         <Founder />

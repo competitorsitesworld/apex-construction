@@ -48,11 +48,14 @@
       }
     </style>
     
-    <!-- Environment Polyfill for API Key safety -->
+    <!-- CRITICAL: Process Polyfill to prevent white screen crashes -->
     <script>
-      if (typeof process === 'undefined') {
-        window.process = { env: { API_KEY: '' } };
-      }
+      window.process = {
+        env: {
+          NODE_ENV: 'development',
+          API_KEY: '' // This will be populated by the build environment if available
+        }
+      };
     </script>
 
     <script type="importmap">
@@ -71,6 +74,7 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Module Entry Point -->
     <script type="module" src="./index.tsx"></script>
   </body>
 </html>
